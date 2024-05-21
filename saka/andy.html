@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil avec CAPTCHA Cloudflare Turnstile</title>
+    <!-- Script pour charger le CAPTCHA de Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <style>
+        /* Centrer le contenu de la page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenue sur mon site</h1>
+        <!-- Conteneur pour le CAPTCHA -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAawVRAv-GvOn221" data-callback="captchaCallback"></div>
+        <br/>
+        <!-- Bouton pour accéder au site après validation du CAPTCHA -->
+        <button id="accessButton" style="display:none;" onclick="redirectToMainPage()">Accéder au site</button>
+    </div>
+    <!-- Script pour gérer le retour du CAPTCHA et la redirection -->
+    <script>
+        function captchaCallback(token) {
+            // Affiche le bouton d'accès une fois le CAPTCHA validé
+            document.getElementById('accessButton').style.display = 'block';
+        }
+
+        function redirectToMainPage() {
+            // Redirige vers la page principale du site
+            window.location.href = 'hallo.html'; // Remplacez 'main.html' par l'URL de votre page principale
+        }
+    </script>
+</body>
+</html>
