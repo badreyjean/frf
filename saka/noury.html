@@ -8,6 +8,21 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
     <title>Welcome to your dearm</title>
+	    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <style>
+        /* Centrer le contenu de la page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+    </style>
 <meta name="description" content="Link Locked"/>
 <meta property="og:title" content="Link Locked"/>
 <meta property="og:description" content="Link Locked"/>
@@ -106,6 +121,23 @@
 	<div class="cf-turnstile" data-sitekey="0x4AAAAAAAawVRAv-GvOn221" data-callback="javascriptCallback"></div>
 </head>
 <body>
+	        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAawVRAv-GvOn221" data-callback="captchaCallback"></div>
+        <br/>
+        <!-- Bouton pour accéder au site après validation du CAPTCHA -->
+        <button id="accessButton" style="display:none;" onclick="redirectToMainPage()">Accéder au site</button>
+    </div>
+    <!-- Script pour gérer le retour du CAPTCHA et la redirection -->
+    <script>
+        function captchaCallback(token) {
+            // Affiche le bouton d'accès une fois le CAPTCHA validé
+            document.getElementById('accessButton').style.display = 'block';
+        }
+
+        function redirectToMainPage() {
+            // Redirige vers la page principale du site
+            window.location.href = 'main.html'; // Remplacez 'main.html' par l'URL de votre page principale
+        }
+    </script>
 
 <!DOCTYPE html>
 <html>
