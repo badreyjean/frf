@@ -1,45 +1,53 @@
-
 <!DOCTYPE html>
-<html dir='ltr' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
-
-
+<html lang="en">
 <head>
-<link href='../www.blogger.com/static/v1/widgets/55013136-widget_css_bundle.css' rel='stylesheet' type='text/css'/>
-
-<META CONTENT='2; url=saka/noury.html' HTTP-EQUIV='Refresh'></META>
-
-
-<link href='img/favicon.html' rel='icon' type='image/x-icon'/>
-<style>
-    html,body {height:100%;}
-body {
-	margin:0;
-	background-image:url(background.jpg);
-	background-size:cover;
-	background-position:center;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	font-family: 'Roboto', sans-serif;
-}
-</style>
-<title>ba7r</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page with Cloudflare Turnstile CAPTCHA</title>
+    <!-- Script to load the Cloudflare Turnstile CAPTCHA -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <style>
+        /* Center the content of the page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .large-text {
+            font-size: 20px;
+        }
+    </style>
 </head>
-
 <body>
+    <div class="container">
+        <!-- Text before CAPTCHA with enlarged font size -->
+        <p class="large-text">Confirm that you are a human by completing the action below.</p>
+        <!-- Container for the CAPTCHA -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAawVRAv-GvOn221" data-callback="captchaCallback"></div>
+        <br/>
+        <!-- Button to access the site after CAPTCHA validation -->
+        <button id="accessButton" style="display:none;" onclick="redirectToMainPage()">Access the site</button>
+        <!-- Text after CAPTCHA -->
+        <p id="postCaptchaText" style="display:none;">Thank you for confirming you are a human.</p>
+    </div>
+    <!-- Script to handle the CAPTCHA callback and redirection -->
+    <script>
+        function captchaCallback(token) {
+            // Display the access button and the post-CAPTCHA text once the CAPTCHA is validated
+            document.getElementById('accessButton').style.display = 'block';
+            document.getElementById('postCaptchaText').style.display = 'block';
+        }
 
-<div class='post-body entry-content' id='post-body-7033267091551911026' itemprop='description articleBody'>
-<h2 style="text-align: center;"><div class="separator" style="clear: both; text-align: center;">
-<a href="www.google.com" style="margin-left: 1em; margin-right: 1em;">
-<img border="0" data-original-height="200" data-original-width="200" height="200" src="loading.gif" width="200" /></a></div><br />Please Wait</h2>
-
-<div style='clear: both;'></div>
-
-      
-</div>
-</div>
-
+        function redirectToMainPage() {
+            // Redirect to the main page of the site
+            window.location.href = 'main.html'; // Replace 'main.html' with the URL of your main page
+        }
+    </script>
 </body>
-
-
 </html>
